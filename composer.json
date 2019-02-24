@@ -1,0 +1,10 @@
+{   
+    "name": "sivka/filesystem",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Sivka\\": "/src"
+        }
+    }
+}
