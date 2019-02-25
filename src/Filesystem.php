@@ -57,3 +57,5 @@ class Filesystem {
     }
 
 }
+
+require __DIR__ . '/../Autoload.php';
