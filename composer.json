@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-0": {
-            "": "src/Autoload.php"
+            "Sivka\\Filesystem": "src/"
         }
     },
     "keywords": [
