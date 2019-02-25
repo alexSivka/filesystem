@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Sivka\\Filesystem": "src/"
+            "Sivka\\Filesystem\\": "src/"
         }
     },
     "keywords": [
