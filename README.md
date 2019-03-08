@@ -17,6 +17,9 @@ The **real** filesystem abstraction layer. Work easy with filesystem as never be
 composer require sivka/filesystem
 ```
 
+If you can't use composer 
+[download latest release]([./docs/ru/index.md](https://github.com/alexSivka/filesystem/releases)), unpack somewhere in your project and include Autoload.php from `filestem-[version]` folder.
+
 ## Requirements
 
 - PHP 5.6.0+

@@ -1,29 +1,32 @@
 <?php
 
 namespace Sivka\Filesystem\Adapter;
-  
 
+
+use Sivka\Filesystem;
 use Sivka\Filesystem\AdapterInterface;
 use Sivka\Filesystem\Adapter\Local\File;
 use Sivka\Filesystem\Adapter\Local\Directory;
 use Sivka\Filesystem\Adapter\Local\Link;
 
-class Local implements AdapterInterface {
+class Zip implements AdapterInterface {
 
-    /** @var string */
-    protected $root;
+    /** @var object */
+    protected $zip;
 
-    /** @var string */
-    protected $osName;
+    /** @var object */
+    protected $file;
+
+    protected $tmpFile;
 
     /**
      * Local constructor.
-     * @param null|string $root
+     * @param string|object $file
      */
-    function __construct($root = null){
-        if(!$root) $root = $_SERVER['DOCUMENT_ROOT'];
-        $this->root = rtrim($root, '/') . '/';
-        $this->osName = strtoupper(substr(PHP_OS, 0, 3));
+    function __construct($file){
+        $this->file = is_string($file) ? Filesystem::get($file) :  $file;
+        $this->zip = new \ZipArchive();
+        $this->zip->open($file->getPath());
     }
 
     /**
@@ -31,6 +34,9 @@ class Local implements AdapterInterface {
      * @return null|Directory|File|Link
      */
     public function get($path){
+
+
+
         $absPath = $this->getAbsolutePath($path);
         if($this->osName == 'WIN') {
             if(str_replace('\\', '/', realpath($absPath)) != $absPath) return $this->link($path);
@@ -71,26 +77,13 @@ class Local implements AdapterInterface {
      * @return string
      */
     public function getAbsolutePath($path){
-        if(strpos($path, $this->root) !== 0) $path = $this->root . ltrim($path, '/');
-        return $path;
+        return '/';
     }
 
 
-    /**
-     * @return string
-     */
-    public function getRoot(){
-        return $this->root;
-    }
 
-    /**
-     * @return string
-     */
-    public function getOsName(){
-        return $this->osName;
-    }
 
     public function getName(){
-        return 'Local';
+        return 'Zip';
     }
 }

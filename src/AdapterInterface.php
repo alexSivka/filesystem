@@ -10,4 +10,6 @@ interface AdapterInterface {
 
     public function getAbsolutePath($path);
 
+    public function getName();
+
 }

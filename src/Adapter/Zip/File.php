@@ -1,10 +1,10 @@
 <?php
 
-namespace Sivka\Filesystem\Adapter\Ftp;
+namespace Sivka\Filesystem\Adapter\Zip;
 
 use Sivka\Filesystem\FileInterface;
 
-class File extends AbstractFtp implements FileInterface {
+class File extends AbstractZip implements FileInterface {
 
     /**
      * @param string $path

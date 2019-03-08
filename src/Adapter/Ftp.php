@@ -276,6 +276,10 @@ class Ftp implements AdapterInterface {
         return $files;
     }
 
+    public function getName(){
+        return 'Ftp';
+    }
+
 
     protected function getCached($key, $path){
         if($this->useCache && isset($this->cache[$key][$path])) return $this->cache[$key][$path];
@@ -289,4 +293,6 @@ class Ftp implements AdapterInterface {
     public function cacheable($flag){
         $this->useCache = $flag;
     }
+
+
 }
